@@ -22,7 +22,7 @@ def build_user_filter() -> filters.BaseFilter:
 
 
 def main() -> None:
-    app = ApplicationBuilder().token(get_token()).build()
+    app = ApplicationBuilder().token(get_token()).connect_timeout(60).build()
 
     allowed = build_user_filter()
 
