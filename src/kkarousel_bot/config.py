@@ -23,7 +23,7 @@ def get_allowed_usernames() -> set[str]:
     raw = os.getenv("ALLOWED_USERNAMES", "")
     if not raw.strip():
         raise RuntimeError("ALLOWED_USERNAMES environment variable is not set")
-    return {u.strip().lstrip("@").lower() for u in raw.split(",") if u.strip()}
+    return {u.strip().lstrip("@") for u in raw.split(",") if u.strip()}
 
 
 def get_api_url() -> str:
