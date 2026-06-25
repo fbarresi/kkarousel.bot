@@ -32,7 +32,7 @@ def main() -> None:
     app.add_handler(MessageHandler(allowed & filters.PHOTO, photo))
 
     logger.info("Bot started. Press Ctrl+C to stop.")
-    app.run_polling()
+    app.run_polling(timeout=1000, pool_timeout=1000, read_timeout=1000, write_timeout=1000, connect_timeout=1000)
 
 
 if __name__ == "__main__":
