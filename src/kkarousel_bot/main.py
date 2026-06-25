@@ -16,9 +16,12 @@ logger = logging.getLogger(__name__)
 
 
 def build_user_filter() -> filters.BaseFilter:
-    usernames = get_allowed_usernames()
+    usernames = list(get_allowed_usernames())
     logger.info("Allowed usernames: %s", usernames)
-    return filters.User(username=list(usernames))
+    filter = filters.User(username=usernames[0])
+    if len(usernames) > 1:
+        filter.add_usernames(usernames[1:])
+    return filter
 
 
 def main() -> None:
